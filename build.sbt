@@ -4,9 +4,10 @@ ThisBuild / version      := "1.0.0"
 ThisBuild / scalaVersion := "2.13.0"
 
 libraryDependencies ++= Seq(
-  "com.github.pureconfig" %% "pureconfig" % "0.12.1",
-  "org.wvlet.airframe" %% "airframe-log" % "19.10.1",
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+  "com.github.pureconfig"      %% "pureconfig"      % "0.12.1",
+  "com.typesafe.scala-logging" %% "scala-logging"   % "3.9.2",
+  "ch.qos.logback"             %  "logback-classic" % "1.2.3",
+  "org.scalatest"              %% "scalatest"       % "3.0.8" % "test"
 )
 
 // Linting
@@ -18,5 +19,6 @@ wartremoverErrors ++= Warts.allBut(
   Wart.Null,
   Wart.Throw,
   Wart.Equals,
+  Wart.Overloading,
   Wart.StringPlusAny
 )

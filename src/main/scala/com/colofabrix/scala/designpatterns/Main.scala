@@ -1,25 +1,23 @@
 package com.colofabrix.scala.designpatterns
 
 import com.colofabrix.scala.designpatterns.examples._
+import com.typesafe.scalalogging.LazyLogging
 
-object TransactionsExercise extends App {
-  println("")
+object TransactionsExercise extends App with LazyLogging {
+  logger.info("Welcome to TransactionsExercise")
+
+  // Strategy pattern
   Example1.run()
 
-  println("")
+  // Builder pattern
   Example2.run()
 
-  println("")
+  // Adapter pattern
   Example3.run()
 
-  println("")
+  // Decorator pattern
   Example4.run()
 
-  println("")
+  // Singleton pattern + Config
   Example5.run()
-
-  // https://github.com/outr/scribe
-  // https://github.com/wvlet/airframe/tree/master/airframe-log
-  println("")
-  Example6.run()
 }

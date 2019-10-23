@@ -3,13 +3,14 @@ package com.colofabrix.scala.designpatterns.examples
 import com.colofabrix.scala.designpatterns.service._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
-import com.colofabrix.scala.designpatterns._
 
 /**
- * Showing how to use the strategy pattern to choose how to do things
+ * Showing how to use the STRATEGY pattern to choose how to do things
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
-object Example1 {
+object Example1 extends Example {
+  val name: String = "Example 1"
+
   // Choose the loader
   val loader = new FileTransactionsLoader("transactions.txt")
 
@@ -17,12 +18,5 @@ object Example1 {
   val filter = new AmountRangeTransactionFilter(250, 750)
 
   // Create the calculator
-  val calc = new TransactionCalculator(loader, filter)
-
-  def run(): Unit = {
-    println("EXAMPLE 1")
-    for (account <- calc.averageByAccount) {
-      println("Account %3s -> %3.2f".format(account._1, account._2))
-    }
-  }
+  val calculator = new TransactionCalculator(loader, filter)
 }

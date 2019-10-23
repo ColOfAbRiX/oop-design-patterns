@@ -3,13 +3,15 @@ package com.colofabrix.scala.designpatterns.examples
 import com.colofabrix.scala.designpatterns.service._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
-import com.colofabrix.scala.designpatterns._
 
 /**
- * Showing how to adapt a different object to "fit" the space of another, being used as another
+ * Showing how to use an ADAPTER pattern to adapt the object we have available with a different
+ * object that is required to be passed
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
-object Example3 {
+object Example3 extends Example {
+  val name: String = "Example 3"
+
   // Build a different type of filter
   val filter = GenericTransactionListFilter.dayFilter(List(), 8)
 
@@ -17,14 +19,7 @@ object Example3 {
   val adaptedFilter = new GenericToFilterAdapter(filter)
 
   // Reuse the TransactionCalculatorBuilder we set up before in Example2
-  val calc = Example2.calcBuilder
+  val calculator = Example2.calcBuilder
     .withFilter(adaptedFilter)
     .build()
-
-  def run(): Unit = {
-    println("EXAMPLE 3")
-    for (account <- calc.averageByAccount) {
-      println("Account %3s -> %3.2f".format(account._1, account._2))
-    }
-  }
 }
