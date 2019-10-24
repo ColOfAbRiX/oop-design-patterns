@@ -1,10 +1,9 @@
 package com.colofabrix.scala.designpatterns
 
 import com.colofabrix.scala.designpatterns.examples._
-import com.typesafe.scalalogging.LazyLogging
 
-object TransactionsExercise extends App with LazyLogging {
-  logger.info("Welcome to TransactionsExercise")
+object TransactionsExercise extends App {
+  Logging.init()
 
   // Strategy pattern
   Example1.run()

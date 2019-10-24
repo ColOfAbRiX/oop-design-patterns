@@ -11,12 +11,8 @@ import com.colofabrix.scala.designpatterns.loaders._
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example5 extends Example {
-  val name: String = "Example 5"
-
   // Initialize everything automatically
   val loader = TransactionLoader(GlobalConfig().loaderType)
-
   val filter = TransactionFilter(GlobalConfig().filterType)
-
   val calculator = new TransactionCalculator(loader, filter)
 }

@@ -9,8 +9,6 @@ import com.colofabrix.scala.designpatterns.loaders._
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example4 extends Example {
-  val name: String = "Example 4"
-
   val loader = new FileTransactionsLoader("transactions.txt")
 
   // Create a new filter building around existing filters

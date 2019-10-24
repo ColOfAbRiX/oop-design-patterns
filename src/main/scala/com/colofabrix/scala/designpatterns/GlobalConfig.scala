@@ -2,42 +2,40 @@ package com.colofabrix.scala.designpatterns
 
 import pureconfig._
 import pureconfig.generic.auto._
+import wvlet.log.LogSupport
 
 // SINGLETON PATTERN  //
 
 /**
  * Global application configuration
  */
-class GlobalConfig private () {
+class GlobalConfig private () extends LogSupport {
   private val source = ConfigSource.default
     .at("com.colofabrix.scala.designpatterns")
 
   val loaderType: LoaderType = source
     .at("loader")
     .loadOrThrow[LoaderType]
+  debug(s"LoaderType configuration: $loaderType")
 
   val filterType: FilterType = source
     .at("filter")
     .loadOrThrow[FilterType]
+  debug(s"FilterType configuration: $filterType")
 }
 
-object GlobalConfig {
+object GlobalConfig extends LogSupport {
   private var globalConfig: GlobalConfig = null
 
   def apply(): GlobalConfig = {
     // Creates a new instance only when it's never been created before
     if (this.globalConfig == null) {
+      info("Loading configuration")
       this.globalConfig = new GlobalConfig()
     }
     // Return the stored instance
     this.globalConfig
   }
-}
-
-// This would be the idiomatic Scala way for a Singleton
-object ScalaGlobalConfig {
-  def loaderType: String = ???
-  def filterType: String = ???
 }
 
 //  CONFIGURATION USING ADT  //
@@ -57,3 +55,10 @@ sealed trait FilterType
 final case object NoopFilterType extends FilterType
 final case class DayFilterType(day: Int) extends FilterType
 final case class AmountRangeFilterType(min: Double, max: Double) extends FilterType
+
+
+// This would be the idiomatic Scala way for a Singleton
+object ScalaGlobalConfig {
+  def loaderType: String = ???
+  def filterType: String = ???
+}

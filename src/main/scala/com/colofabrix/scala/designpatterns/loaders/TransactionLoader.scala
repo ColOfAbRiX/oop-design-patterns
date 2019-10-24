@@ -32,6 +32,13 @@ class EmptyTransactionsLoader extends TransactionLoader {
 }
 
 /**
+ * Loader used for unit testing, always returns the given list
+ */
+class PresetTransactionsLoader(trs: List[Transaction]) extends TransactionLoader {
+  def transactions: List[Transaction] = trs
+}
+
+/**
  * Loads transactions from a file
  */
 class FileTransactionsLoader(filePath: String) extends TransactionLoader {
@@ -41,7 +48,7 @@ class FileTransactionsLoader(filePath: String) extends TransactionLoader {
       .drop(1)
   }
 
-  override val transactions: List[Transaction] = {
+  val transactions: List[Transaction] = {
     transactionsLines
     .map { line =>
       val split = line.split(',')
@@ -71,7 +78,7 @@ class RandomTransactionsLoader extends TransactionLoader {
   /** Picks a random element inside a given list */
   private def rndElem[A](xs: List[A]): A = xs(rnd.nextInt(xs.length))
 
-  override val transactions = List.tabulate(transactionsCount) { transactionId =>
+  val transactions = List.tabulate(transactionsCount) { transactionId =>
     Transaction(
       "T%05d".format(transactionId),
       rndElem(accountsList),

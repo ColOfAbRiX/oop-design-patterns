@@ -9,8 +9,6 @@ import com.colofabrix.scala.designpatterns.loaders._
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example1 extends Example {
-  val name: String = "Example 1"
-
   // Choose the loader
   val loader = new FileTransactionsLoader("transactions.txt")
 

@@ -10,8 +10,6 @@ import com.colofabrix.scala.designpatterns.loaders._
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example3 extends Example {
-  val name: String = "Example 3"
-
   // Build a different type of filter
   val filter = GenericTransactionListFilter.dayFilter(List(), 8)
 

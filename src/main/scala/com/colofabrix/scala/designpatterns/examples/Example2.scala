@@ -9,8 +9,6 @@ import com.colofabrix.scala.designpatterns.loaders._
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example2 extends Example {
-  val name: String = "Example 2"
-
   // All the configuration of the TransactionCalculator is done using the builder
   val calcBuilder = TransactionCalculatorBuilder()
     .withFilter(new DayTransactionFilter(8))
