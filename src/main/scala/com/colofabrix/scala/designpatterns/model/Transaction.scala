@@ -1,18 +1,13 @@
 package com.colofabrix.scala.designpatterns.model
 
 final case class Transaction(
-    transactionId: String,
-    accountId: String,
-    transactionDay: Int,
+    id: String,
+    account: String,
+    day: Int,
     category: String,
-    transactionAmount: Double
+    amount: Double
 ) {
   override def toString(): String =
-    "Transaction(ID=%s, Account=%3s, Day=%02d, Category=%s, Amount=%3.2f)".format(
-      transactionId,
-      accountId,
-      transactionDay,
-      category,
-      transactionAmount
-    )
+    "Transaction(ID=%s, Account=%3s, Day=%02d, Category=%s, Amount=%3.2f)"
+      .format(id, account, day, category, amount)
 }

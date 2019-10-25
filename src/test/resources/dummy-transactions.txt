@@ -1,0 +1,8 @@
+transactionId,accountId,transactionDay,category,transactionAmount
+T0008,A49,1,DD,848.90
+T00012,A2,1,DD,775.37
+T00044,A1,1,DD,227.64
+T000134,A1,4,FF,977.98
+T000199,A1,5,CC,171.19
+T000271,A1,7,FF,622.43
+T000164,A2,4,DD,208.19

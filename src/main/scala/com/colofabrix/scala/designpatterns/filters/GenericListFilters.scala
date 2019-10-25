@@ -27,7 +27,7 @@ object GenericTransactionListFilter {
 
   // Builder of a filter by day
   def dayFilter(trs: List[Transaction], day: Int): GenericTransactionListFilter =
-    new GenericTransactionListFilter(trs, x => x.transactionDay == day)
+    new GenericTransactionListFilter(trs, x => x.day == day)
 
   // Builder of a filter by amount range
   def amountRangeFilter(
@@ -37,7 +37,7 @@ object GenericTransactionListFilter {
   ): GenericTransactionListFilter =
     new GenericTransactionListFilter(
       trs,
-      x => x.transactionAmount >= min && x.transactionAmount <= max
+      x => x.amount >= min && x.amount <= max
     )
 
 }

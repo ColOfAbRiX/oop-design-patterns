@@ -36,7 +36,7 @@ class NoopTransactionFilter extends TransactionFilter {
  */
 class DayTransactionFilter(day: Int) extends TransactionFilter {
   def applyFilter(transactions: List[Transaction]): List[Transaction] = {
-    transactions.filter(_.transactionDay == day)
+    transactions.filter(_.day == day)
   }
 }
 
@@ -45,6 +45,6 @@ class DayTransactionFilter(day: Int) extends TransactionFilter {
  */
 class AmountRangeTransactionFilter(min: Double, max: Double) extends TransactionFilter {
   def applyFilter(transactions: List[Transaction]): List[Transaction] = {
-    transactions.filter(tr => tr.transactionAmount >= min && tr.transactionAmount < max)
+    transactions.filter(tr => tr.amount >= min && tr.amount < max)
   }
 }
