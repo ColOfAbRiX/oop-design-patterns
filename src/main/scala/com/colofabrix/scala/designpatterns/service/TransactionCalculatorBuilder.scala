@@ -1,6 +1,5 @@
 package com.colofabrix.scala.designpatterns.service
 
-import com.colofabrix.scala.designpatterns.model._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
 
@@ -19,7 +18,7 @@ class TransactionCalculatorBuilder private (
     new TransactionCalculator(this.loader, this.filter)
   }
 
-    /** Sets the loader to user */
+  /** Sets the loader to user */
   def withLoader(loader: TransactionLoader): TransactionCalculatorBuilder = {
     new TransactionCalculatorBuilder(loader, this.filter)
   }

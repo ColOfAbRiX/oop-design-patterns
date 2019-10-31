@@ -1,9 +1,6 @@
 package com.colofabrix.scala.designpatterns
 
 import com.colofabrix.scala.designpatterns.examples._
-import java.lang.annotation.Annotation
-import java.lang.reflect.Method
-import scala.reflect._
 
 object TransactionsExercise extends App {
   Logging.init()
@@ -17,12 +14,12 @@ object TransactionsExercise extends App {
   // Adapter pattern
   Example3.run()
 
-  // Decorator pattern
+  // Singleton pattern + Config
   Example4.run()
 
-  // Singleton pattern + Config
+  // Proxy pattern
   Example5.run()
 
-  // Proxy pattern + Logging
+  // Decorator pattern + Logging
   Example6.run()
 }

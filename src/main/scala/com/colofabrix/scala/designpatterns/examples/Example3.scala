@@ -1,8 +1,6 @@
 package com.colofabrix.scala.designpatterns.examples
 
-import com.colofabrix.scala.designpatterns.service._
 import com.colofabrix.scala.designpatterns.filters._
-import com.colofabrix.scala.designpatterns.loaders._
 
 /**
  * Showing how to use an ADAPTER pattern to adapt the object we have available with a different

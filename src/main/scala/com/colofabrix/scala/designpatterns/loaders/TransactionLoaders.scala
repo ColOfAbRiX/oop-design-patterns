@@ -1,8 +1,8 @@
 package com.colofabrix.scala.designpatterns.loaders
 
-import com.colofabrix.scala.designpatterns.model._
 import com.colofabrix.scala.designpatterns._
-import scala.util.Random
+import com.colofabrix.scala.designpatterns.model._
+
 import scala.io.Source
 
 //  STRATEGY PATTERN  //

@@ -1,8 +1,6 @@
 package com.colofabrix.scala.designpatterns.examples
 
 import com.colofabrix.scala.designpatterns.service._
-import com.colofabrix.scala.designpatterns.filters._
-import com.colofabrix.scala.designpatterns.loaders._
 import wvlet.log.LogSupport
 
 //  FACTORY METHOD  //

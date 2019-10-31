@@ -1,7 +1,7 @@
 package com.colofabrix.scala.designpatterns
 
-import wvlet.log._
 import com.github.lalyos.jfiglet._
+import wvlet.log._
 
 /**
  * Initializes and configures airframe-log for logging

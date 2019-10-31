@@ -1,7 +1,6 @@
 package com.colofabrix.scala.designpatterns
 
 import pureconfig._
-import pureconfig.generic.auto._
 import wvlet.log.LogSupport
 
 // SINGLETON PATTERN  //

@@ -1,28 +1,30 @@
 package com.colofabrix.scala.designpatterns.examples
 
-import com.colofabrix.scala.designpatterns.service._
+import com.colofabrix.scala.designpatterns._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
-import com.colofabrix.scala.designpatterns._
+import com.colofabrix.scala.designpatterns.service._
 
 /**
- * Showing how to control access to an existing objects using a PROXY pattern
- * This pattern looks very similar to the decorator but its focus is different
+ * Showing how to enrich existing objects using a DECORATOR pattern
  */
 @SuppressWarnings(Array("org.wartremover.warts.PublicInference"))
 object Example6 extends Example {
-  // Create a new loader building around an existing loader
-  val loader = new CachedTransactionLoader(
-    new LoggedTransactionLoader(
-      TransactionLoader(GlobalConfig().loaderType)
-    )
-  )
+  // We create a long series of russian-dolls loaders
+  val realLoader = new FileTransactionsLoader("transactions.txt")
+  val innerLogger = new LoggedTransactionLoader(realLoader)
+  val middleCachedLoader = new CachedTransactionLoader(innerLogger)
+  val outerLogger = new LoggedTransactionLoader(middleCachedLoader)
 
+  // Showing that the realLoader is called only once because we cache!
+  for( i <- 0 to 5 ) outerLogger.transactions
+
+  // Knowing the exact implementation of a loader we can use its additional "decorated" features
+  middleCachedLoader.reload()
+
+  // Filter as usual
   val filter = TransactionFilter(GlobalConfig().filterType)
 
-  // Let's prove that the requests are indeed cached making 10 calls
-  for( _ <- 0 until 10 ) loader.transactions
-
   // Create the calculator
-  val calculator = new TransactionCalculator(loader, filter)
+  val calculator = new TransactionCalculator(outerLogger, filter)
 }

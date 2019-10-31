@@ -1,8 +1,8 @@
 package com.colofabrix.scala.designpatterns.examples
 
-import com.colofabrix.scala.designpatterns.service._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
+import com.colofabrix.scala.designpatterns.service._
 
 /**
  * Showing how to use the STRATEGY pattern to choose how to do things

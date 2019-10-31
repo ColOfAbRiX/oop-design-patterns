@@ -1,8 +1,8 @@
 package com.colofabrix.scala.designpatterns.service
 
-import com.colofabrix.scala.designpatterns.model._
 import com.colofabrix.scala.designpatterns.filters._
 import com.colofabrix.scala.designpatterns.loaders._
+import com.colofabrix.scala.designpatterns.model._
 
 //  STRATEGY PATTERN  //
 
@@ -31,22 +31,11 @@ class TransactionCalculator(reader: TransactionLoader, filter: TransactionFilter
       }.toMap
   }
 
-  // Giving new names to types to make things cleaner
-  type ByAccount[A] = Map[String, A]
-  type ByDay[A] = Map[Int, A]
-
-  def averageByAccountByDay(): ByAccount[ByDay[Double]] = {
+  def averageByAccountByDay2() = {
     this.getTransactions()
-      // Group transactions by Account ID
-      .groupBy(_.account)
-      .mapValues {
-        // Group transactions by Day
-        _.groupBy(_.day)
-        // For each account/day...
-        .mapValues { account =>
-          // ...calculate the average amount
-          account.map(_.amount).sum / account.length
-        }.toMap
+      .groupBy(t => (t.account, t.day))
+      .mapValues { transactions =>
+        transactions.map(_.amount).sum / transactions.length
       }.toMap
   }
 
