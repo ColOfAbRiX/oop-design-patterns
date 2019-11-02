@@ -16,6 +16,10 @@ class TransactionCalculator(reader: TransactionLoader, filter: TransactionFilter
     filter.applyFilter(transactions)
   }
 
+  private def averageAmounts(transactions: List[Transaction]): Double = {
+    transactions.map(_.amount).sum / transactions.length
+  }
+
   //  HOW TO WORK ON DATA WITH SCALA  //
 
   def averageByAccount(): Map[String, Double] = {
@@ -25,18 +29,15 @@ class TransactionCalculator(reader: TransactionLoader, filter: TransactionFilter
       // Remove accounts that don't have transactions (just to show one more step)
       .filter(_._2.length > 0)
       // For each account...
-      .mapValues { account =>
-        // ...calculate the average amount
-        account.map(_.amount).sum / account.length
-      }.toMap
+      .mapValues(averageAmounts)
+      .toMap
   }
 
-  def averageByAccountByDay2() = {
+  def averageByAccountByDay(): Map[(String, Int), Double] = {
     this.getTransactions()
       .groupBy(t => (t.account, t.day))
-      .mapValues { transactions =>
-        transactions.map(_.amount).sum / transactions.length
-      }.toMap
+      .mapValues(averageAmounts)
+      .toMap
   }
 
 }

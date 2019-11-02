@@ -1,7 +1,7 @@
 package com.colofabrix.scala.designpatterns.loaders
 
 import com.colofabrix.scala.designpatterns.model._
-import wvlet.log.{LogLevel, LogSupport}
+import wvlet.log._
 
 //  DECORATOR PATTERN  //
 

@@ -23,7 +23,6 @@ javaOptions in Universal ++= Seq(
 /*
  * Dependencies
  */
-
 libraryDependencies ++= Seq(
   "com.github.pureconfig" %% "pureconfig" % "0.12.1",
   "org.wvlet.airframe" %% "airframe-log" % "19.10.1",
@@ -44,6 +43,7 @@ wartremoverErrors ++= Warts.allBut(
   Wart.Var,
   Wart.Null,
   Wart.Throw,
+  Wart.While,
   Wart.Equals,
   Wart.Overloading,
   Wart.StringPlusAny,

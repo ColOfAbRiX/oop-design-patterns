@@ -1,9 +1,8 @@
 package com.colofabrix.scala.designpatterns.loaders
 
-import java.nio.file._
-
 import com.colofabrix.scala.designpatterns.model._
 
+import java.nio.file._
 import scala.util._
 
 //  PROXY PATTERN  //

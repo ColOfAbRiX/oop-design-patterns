@@ -22,4 +22,7 @@ object TransactionsExercise extends App {
 
   // Decorator pattern + Logging
   Example6.run()
+
+  // Iterator pattern
+  Example7.run()
 }

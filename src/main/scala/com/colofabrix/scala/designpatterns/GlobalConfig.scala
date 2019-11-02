@@ -2,6 +2,7 @@ package com.colofabrix.scala.designpatterns
 
 import pureconfig._
 import wvlet.log.LogSupport
+import pureconfig.generic.auto._
 
 // SINGLETON PATTERN  //
 
@@ -21,6 +22,10 @@ class GlobalConfig private () extends LogSupport {
     .at("filter")
     .loadOrThrow[FilterType]
   debug(s"FilterType configuration: $filterType")
+
+  val other: Other = source
+    .at("other")
+    .loadOrThrow[Other]
 }
 
 object GlobalConfig extends LogSupport {
@@ -55,6 +60,12 @@ final case object NoopFilterType extends FilterType
 final case class DayFilterType(day: Int) extends FilterType
 final case class AmountRangeFilterType(min: Double, max: Double) extends FilterType
 
+/**
+ * Other settings
+ */
+final case class Other(
+  useConsole: Boolean
+)
 
 // This would be the idiomatic Scala way for a Singleton
 object ScalaGlobalConfig {

@@ -2,8 +2,10 @@ package com.colofabrix.scala.designpatterns.loaders
 
 import com.colofabrix.scala.designpatterns._
 import com.colofabrix.scala.designpatterns.model._
+import com.colofabrix.scala.designpatterns.iterators._
 
 import scala.io.Source
+import scala.collection.mutable.ArraySeq
 
 //  STRATEGY PATTERN  //
 
