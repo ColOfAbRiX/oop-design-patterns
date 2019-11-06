@@ -16,6 +16,9 @@ class TransactionLoaderSpec extends FlatSpec with Matchers {
     Transaction("T000271", "A1", 7, "FF", 622.43),
     Transaction("T000164", "A2", 4, "DD", 208.19)
   )
+  val badTransactionsFile = getClass.getResource("/bad-transactions.txt").getFile
+
+  // FileTransactionsLoader
 
   "FileTransactionsLoader" should "load all the transactions" in {
     val result = new FileTransactionsLoader(dummyTransactionsFile).transactions
@@ -28,4 +31,20 @@ class TransactionLoaderSpec extends FlatSpec with Matchers {
     }
   }
 
+  // SafeTransactionLoader
+
+  "SafeTransactionLoader" should "load all the transactions" in {
+    val result = new SafeTransactionLoader(dummyTransactionsFile).transactions
+    result should contain theSameElementsAs (dummyTransactions)
+  }
+
+  "SafeTransactionLoader" should "return an empty list when given a missing file" in {
+    val result = new SafeTransactionLoader("i-do-not-exist.txt").transactions
+    result should have length 0
+  }
+
+  "SafeTransactionLoader" should "return an empty list when given a bad file" in {
+    val result = new SafeTransactionLoader(badTransactionsFile).transactions
+    result should have length 0
+  }
 }

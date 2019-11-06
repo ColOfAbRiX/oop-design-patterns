@@ -45,6 +45,7 @@ wartremoverErrors ++= Warts.allBut(
   Wart.Throw,
   Wart.While,
   Wart.Equals,
+  Wart.TryPartial,
   Wart.Overloading,
   Wart.StringPlusAny,
   Wart.NonUnitStatements
