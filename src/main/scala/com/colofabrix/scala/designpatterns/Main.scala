@@ -25,4 +25,7 @@ object TransactionsExercise extends App {
 
   // Iterator pattern
   Example7.run()
+
+  // Composite pattern
+  Example8.run()
 }

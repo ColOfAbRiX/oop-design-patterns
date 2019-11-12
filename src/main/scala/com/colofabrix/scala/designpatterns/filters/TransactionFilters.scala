@@ -48,14 +48,3 @@ class AmountRangeTransactionFilter(min: Double, max: Double) extends Transaction
     transactions.filter(tr => tr.amount >= min && tr.amount < max)
   }
 }
-
-/**
- * This new class add behaviour to existing TransactionFilter by composing many filters
- */
-class MultipleTransactionFilter(filters: TransactionFilter*) extends TransactionFilter {
-  def applyFilter(transactions: List[Transaction]): List[Transaction] = {
-    filters.foldLeft(transactions) {
-      case (intermediate, currentFilter) => currentFilter.applyFilter(intermediate)
-    }
-  }
-}

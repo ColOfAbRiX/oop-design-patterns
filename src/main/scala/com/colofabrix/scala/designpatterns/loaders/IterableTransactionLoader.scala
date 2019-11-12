@@ -4,7 +4,7 @@ import com.colofabrix.scala.designpatterns.model._
 import com.colofabrix.scala.designpatterns.iterators._
 
 /**
- * Loader that works on any Iterable object
+ * Loader that gets transactions from TIterable[Transaction] objects
  */
 class IterableTransactionLoader(iterable: TIterable[Transaction]) extends TransactionLoader {
   def transactions: List[Transaction] = {
@@ -12,7 +12,7 @@ class IterableTransactionLoader(iterable: TIterable[Transaction]) extends Transa
     var output = List.empty[Transaction]
 
     // Load one element at the time
-    while (iterator.hasNext ) {
+    while (iterator.hasNext) {
       output = iterator.next() +: output
     }
 

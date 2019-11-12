@@ -6,6 +6,10 @@ import com.colofabrix.scala.designpatterns.model._
 
 //  STRATEGY PATTERN  //
 
+/**
+ * This class first loads transactions, then filters them and provides calculation methods over
+ * the resulting transactions.
+ */
 class TransactionCalculator(reader: TransactionLoader, filter: TransactionFilter) {
 
   /** Commodity method that returns the most updated filtered list of transactions */

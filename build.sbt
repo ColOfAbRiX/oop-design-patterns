@@ -1,3 +1,9 @@
+val pureconfigVersion = "0.12.1"
+val airframeLogVersion = "19.10.1"
+val scalatestVersion = % "3.0.8"
+val scalacheckVersion = % "1.14.1"
+val jfigletVersion = % "0.0.8"
+
 /*
  * Main project settings
  */
@@ -15,8 +21,8 @@ lazy val root = (project in file("."))
 
 // Limit how much memory SBT will use
 javaOptions in Universal ++= Seq(
-  "-J-Xms128m",
-  "-J-Xmx1g"
+  "-J-Xms64m",
+  "-J-Xmx512m"
 )
 
 
@@ -24,11 +30,11 @@ javaOptions in Universal ++= Seq(
  * Dependencies
  */
 libraryDependencies ++= Seq(
-  "com.github.pureconfig" %% "pureconfig" % "0.12.1",
-  "org.wvlet.airframe" %% "airframe-log" % "19.10.1",
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.14.1" % "test",
-  "com.github.lalyos" % "jfiglet" % "0.0.8"
+  "com.github.pureconfig" %% "pureconfig"   % pureconfigVersion,
+  "org.wvlet.airframe"    %% "airframe-log" % airframeLogVersion,
+  "org.scalatest"         %% "scalatest"    % scalatestVersion % "test",
+  "org.scalacheck"        %% "scalacheck"   % scalacheckVersion % "test",
+  "com.github.lalyos"     %  "jfiglet"      % jfigletVersion
 )
 
 
@@ -45,7 +51,6 @@ wartremoverErrors ++= Warts.allBut(
   Wart.Throw,
   Wart.While,
   Wart.Equals,
-  Wart.TryPartial,
   Wart.Overloading,
   Wart.StringPlusAny,
   Wart.NonUnitStatements

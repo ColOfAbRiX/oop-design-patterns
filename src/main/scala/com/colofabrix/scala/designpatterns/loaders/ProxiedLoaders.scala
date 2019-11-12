@@ -30,6 +30,7 @@ class SafeTransactionLoader(filePath: String) extends TransactionLoader with Log
     }
   }
 
+  @SuppressWarnings(Array("org.wartremover.warts.TryPartial"))
   def transactions: List[Transaction] = {
     val safeResult = for {
       safeLoader   <- fileLoader
