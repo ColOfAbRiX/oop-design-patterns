@@ -28,4 +28,7 @@ object TransactionsExercise extends App {
 
   // Composite pattern
   Example8.run()
+
+  // Observer pattern
+  Example9.run()
 }

@@ -18,7 +18,7 @@ trait TransactionLoader {
 }
 
 object TransactionLoader {
-  // Convert a configuration into a loader
+  /** Convert a configuration into a loader */
   def apply(loader: LoaderType): TransactionLoader = loader match {
     case EmptyLoaderType          => new EmptyTransactionsLoader()
     case FileLoaderType(filePath) => new FileTransactionsLoader(filePath)

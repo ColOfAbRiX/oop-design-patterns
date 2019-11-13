@@ -19,17 +19,20 @@ class GenericListFilter[A](
 class GenericTransactionListFilter(trs: List[Transaction], condition: Transaction => Boolean)
     extends GenericListFilter[Transaction](trs, condition)
 
+/**
+ * Collects functions to build filters
+ */
 object GenericTransactionListFilter {
 
-  // Builder of oa no-op filter
+  /** Builder of oa no-op filter */
   def noopFilter(trs: List[Transaction]): GenericTransactionListFilter =
     new GenericTransactionListFilter(trs, x => true)
 
-  // Builder of a filter by day
+  /** Builder of a filter by day */
   def dayFilter(trs: List[Transaction], day: Int): GenericTransactionListFilter =
     new GenericTransactionListFilter(trs, x => x.day == day)
 
-  // Builder of a filter by amount range
+  /** Builder of a filter by amount range */
   def amountRangeFilter(
       trs: List[Transaction],
       min: Double,

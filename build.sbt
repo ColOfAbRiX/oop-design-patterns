@@ -1,8 +1,8 @@
 val pureconfigVersion = "0.12.1"
 val airframeLogVersion = "19.10.1"
-val scalatestVersion = % "3.0.8"
-val scalacheckVersion = % "1.14.1"
-val jfigletVersion = % "0.0.8"
+val scalatestVersion = "3.0.8"
+val scalacheckVersion = "1.14.1"
+val jfigletVersion = "0.0.8"
 
 /*
  * Main project settings
@@ -44,7 +44,7 @@ libraryDependencies ++= Seq(
 
 addCompilerPlugin("org.wartremover" %% "wartremover" % "2.4.3" cross CrossVersion.full)
 
-// Allowing warts that are proper of OOP
+// Allowing warts that allow for OOP without FP practices
 wartremoverErrors ++= Warts.allBut(
   Wart.Var,
   Wart.Null,
@@ -53,7 +53,8 @@ wartremoverErrors ++= Warts.allBut(
   Wart.Equals,
   Wart.Overloading,
   Wart.StringPlusAny,
-  Wart.NonUnitStatements
+  Wart.NonUnitStatements,
+  Wart.MutableDataStructures
 )
 
 // Don't check tests
