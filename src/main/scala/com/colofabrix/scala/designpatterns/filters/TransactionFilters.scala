@@ -14,8 +14,8 @@ trait TransactionFilter {
 }
 
 object TransactionFilter {
-   // Convert a configuration into a filter
-   def apply(filter: FilterType): TransactionFilter = filter match {
+  // Convert a configuration into a filter
+  def apply(filter: FilterType): TransactionFilter = filter match {
     case NoopFilterType                  => new NoopTransactionFilter()
     case DayFilterType(day)              => new DayTransactionFilter(day)
     case AmountRangeFilterType(min, max) => new AmountRangeTransactionFilter(min, max)
